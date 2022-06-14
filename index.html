@@ -13,10 +13,10 @@
         let playerScore = 0;
         let compInput;
         let compScore = 0;
-        let pass = false;
         const choices = ["rock", "paper", "scissors"];
 
         function playerPlay() {
+            let pass = false;
             playerInput = prompt("Rock, paper, or scissors?");
 
             let inputCheck = playerInput.toLowerCase();
@@ -88,24 +88,30 @@
                     console.log("You win.");
                     playerScore++;
                     break;
-                
+            }
+            
+            if (playerScore > compScore) {
+            return "You win the game!"
+            }
+            else if (playerScore == compScore) {
+                return "You tied the game!"
+            }
+            else {
+                return "You lost the game!"
             }
         }
 
     function game(){
+        let result;
+
         for (let i = 0; i < 5; i++){
             playerPlay();
             computerPlay();
-            compare(playerInput, compInput);
+            result = compare(playerInput, compInput);
             console.log('You: ' + playerScore + ' vs ' + 'Comp: ' + compScore);
         }
 
-        if (playerScore > compScore){
-            return "You win the game!"
-        }
-        else {
-            return "You lost the game!"
-        }
+        return result;
     }
 
     console.log(game());
