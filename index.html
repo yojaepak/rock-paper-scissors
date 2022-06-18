@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="container"></div>
-    <button id="rockBtn">rock</button>
-    <button id="paperBtn">paper</button>
-    <button id="scissorsBtn">scissors</button>
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissors">scissors</button>
     <script>
 
         let playerInput;
@@ -24,7 +24,8 @@
 
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
-                console.log(button.id);
+                computerPlay();
+                compare(button.id, compInput);
             });
         });
 
@@ -67,6 +68,7 @@
 
         // decide who is the winner of each game and keep score
         function compare(player, comp) {
+            console.log(player+comp);
             switch (player + comp) {
                 
 
@@ -119,21 +121,12 @@
                     results.textContent += ' You win the game!';
                     
                 }
-                else if (playerScore === compScore) {
-                    results.textContent += ' You tied the game!';
-                }
                 else {
             
                     results.textContent += ' You lost the game!';
                 }
             }
         }
-
-        compare('rock','paper');
-        compare('rock','paper');
-        compare('rock','paper');
-        compare('rock','paper');
-        compare('rock','paper');
 
     
 
