@@ -33,12 +33,17 @@
 
         // display results
         const results = document.createElement('div');
+        const score = document.createElement('p');
+        const winner = document.createElement('p');
+        const newline = document.createElement('br');
+        
+        score.style.margin = '0';
+        winner.style.margin = '0';
 
         container.appendChild(results);
-
-        
-
-
+        results.appendChild(score);
+        results.appendChild(newline);
+        results.appendChild(winner);
 
         // take user input to play rps
         function playerPlay() {
@@ -114,16 +119,16 @@
                     playerScore++;
                     break;
             }
-            results.textContent = 'You: ' + playerScore + ' vs ' + 'Computer: ' + compScore;
+            score.textContent = 'You: ' + playerScore + ' vs ' + 'Computer: ' + compScore;
          
             if (playerScore >= 5 || compScore >= 5){
                 if (playerScore > compScore) {
-                    results.textContent += ' You win the game!';
+                    winner.textContent = ' You win the game!';
                     
                 }
                 else {
             
-                    results.textContent += ' You lost the game!';
+                    winner.textContent = ' You lost the game!';
                 }
             }
         }
