@@ -7,6 +7,10 @@
     <title>rock paper scissors</title>
 </head>
 <body>
+    <div id="container"></div>
+    <button id="rockBtn">rock</button>
+    <button id="paperBtn">paper</button>
+    <button id="scissorsBtn">scissors</button>
     <script>
 
         let playerInput;
@@ -14,7 +18,28 @@
         let compInput;
         let compScore = 0;
         const choices = ["rock", "paper", "scissors"];
+        
+        // check for when a button is clicked
+        const buttons = document.querySelectorAll('button');
 
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                console.log(button.id);
+            });
+        });
+
+        const container = document.querySelector('#container');
+
+        // display results
+        const results = document.createElement('div');
+
+        container.appendChild(results);
+
+        
+
+
+
+        // take user input to play rps
         function playerPlay() {
             let pass = false;
             playerInput = prompt("Rock, paper, or scissors?");
@@ -34,58 +59,65 @@
                 }
             }
         }
-        
 
-
-        
-
+        // randomly generate computer choice for rps
         function computerPlay() {
             compInput = choices[Math.floor(Math.random() * 3)];
         }
 
+        // decide who is the winner of each game and keep score
         function compare(player, comp) {
             switch (player + comp) {
                 
 
                 case "rockrock":
                     console.log("It's a tie.");
+                    results.textContent = "It's a tie.";
                     break;
                 
                 case "rockpaper":
                     console.log("You lose.");
+                    results.textContent = "You lose.";
                     compScore++;
                     break;
                 
                 case "rockscissors":
                     console.log("You win.");
+                    results.textContent = "You win.";
                     playerScore++;
                     break;
                 
                 case "paperpaper":
                     console.log("It's a tie.");
+                    results.textContent = "It's a tie.";
                     break;
                 
                 case "paperscissors":
                     console.log("You lose.");
+                    results.textContent = "You lose.";
                     compScore++;
                     break;
                 
                 case "paperrock":
                     console.log("You win.");
+                    results.textContent = "You win.";
                     playerScore++;
                     break;
 
                 case "scissorsscissors":
                     console.log("It's a tie.");
+                    results.textContent = "It's a tie.";
                     break;
                 
                 case "scissorsrock":
                     console.log("You lose.");
+                    results.textContent = "You lose.";
                     compScore++;
                     break;
                 
                 case "scissorspaper":
                     console.log("You win.");
+                    results.textContent = "You win.";
                     playerScore++;
                     break;
             }
@@ -100,21 +132,6 @@
                 return "You lost the game!"
             }
         }
-
-    function game(){
-        let result;
-
-        for (let i = 0; i < 5; i++){
-            playerPlay();
-            computerPlay();
-            result = compare(playerInput, compInput);
-            console.log('You: ' + playerScore + ' vs ' + 'Comp: ' + compScore);
-        }
-
-        return result;
-    }
-
-    console.log(game());
 
     </script>
     
