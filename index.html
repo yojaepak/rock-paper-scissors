@@ -19,7 +19,8 @@
         let compScore = 0;
         const choices = ["rock", "paper", "scissors"];
         
-        // check for when a button is clicked
+        
+        // check for when a rps button is clicked
         const buttons = document.querySelectorAll('button');
 
         buttons.forEach((button) => {
@@ -35,15 +36,23 @@
         const results = document.createElement('div');
         const score = document.createElement('p');
         const winner = document.createElement('p');
-        const newline = document.createElement('br');
-        
+        const choice = document.createElement('p');
+
+
+        choice.style.margin = '0';
         score.style.margin = '0';
         winner.style.margin = '0';
 
         container.appendChild(results);
         results.appendChild(score);
-        results.appendChild(newline);
+        results.appendChild(choice);
         results.appendChild(winner);
+
+
+        score.textContent = 'You: ' + playerScore + ' vs ' + 'Computer: ' + compScore;
+
+        // restart game when button pushed 
+        const playAgain = document.createElement('button');
 
         // take user input to play rps
         function playerPlay() {
@@ -79,6 +88,7 @@
 
                 case "rockrock":
                     console.log("It's a tie.");
+                    choice.textContent = 'You chose: rock ----- Computer chose: rock'
                     winner.textContent = "It's a tie.";
                     break;
                 
@@ -132,15 +142,30 @@
          
             if (playerScore >= 5 || compScore >= 5){
                 if (playerScore > compScore) {
-                    winner.textContent = ' You win the game!';
+                    winner.textContent = 'You win the game!';
                 }
                 else {
             
-                    winner.textContent = ' You lost the game!';
+                    winner.textContent = 'You lost the game!';
                 }
+                
+                playAgain.textContent = 'Play again?';
+                container.appendChild(playAgain);
+
+                playAgain.addEventListener('click', () => {
+                    restartGame();  
+                });
+
             }
         }
 
+        function restartGame() {
+            playerScore = 0;
+            compScore = 0;
+            winner.textContent = "";
+            score.textContent = 'You: ' + playerScore + ' vs ' + 'Computer: ' + compScore;
+            container.removeChild(playAgain);
+        }
     
 
 
