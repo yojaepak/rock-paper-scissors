@@ -12,9 +12,9 @@
     <div id="container">
         <div id="scoreboard"></div>
     </div>
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
+    <input id="rock" type="image" name="rock" src="images/rock.gif">
+    <input id="paper" type="image" name="paper" src="images/paper.jpeg">   
+    <input id="scissors" type="image" name="scissors" src="images/scissors.jpeg">      
     <script>
 
         let playerInput;
@@ -25,7 +25,7 @@
         
         
         // check for when a rps button is clicked
-        const buttons = document.querySelectorAll('button');
+        const buttons = document.querySelectorAll('input');
 
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
