@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>rock paper scissors</title>
 </head>
 <body>
-    <div id="container"></div>
+    <div class="title">ROCK PAPER SCISSORS</div>
+    <div id="container">
+        <div class="players">
+            <div class="player">You</div>
+            <div class="player">Computer</div>
+        </div>
+        <div id="scoreboard"></div>
+    </div>
     <button id="rock">rock</button>
     <button id="paper">paper</button>
     <button id="scissors">scissors</button>
@@ -31,25 +39,35 @@
         });
 
         const container = document.querySelector('#container');
+        const scoreboard = document.querySelector('#scoreboard');
 
         // display results
         const results = document.createElement('div');
-        const score = document.createElement('p');
+        const scoreYou = document.createElement('p');
+        const scoreComp = document.createElement('p');
         const winner = document.createElement('p');
         const choice = document.createElement('p');
 
 
         choice.style.margin = '0';
-        score.style.margin = '0';
+        scoreYou.style.margin = '0';
+        scoreYou.style.color = 'white';
+        scoreYou.style.fontSize = '30px'
+        scoreComp.style.margin = '0';
+        scoreComp.style.color = 'white';
+        scoreComp.style.fontSize = '30px';
         winner.style.margin = '0';
 
         container.appendChild(results);
-        results.appendChild(score);
+        scoreboard.appendChild(scoreYou);
+        scoreboard.appendChild(scoreComp);
         results.appendChild(choice);
         results.appendChild(winner);
 
 
-        score.textContent = 'You: ' + playerScore + ' vs ' + 'Computer: ' + compScore;
+        scoreYou.textContent = playerScore;
+        scoreComp.textContent = compScore;
+
 
         // restart game when button pushed 
         const playAgain = document.createElement('button');
@@ -146,7 +164,8 @@
                     playerScore++;
                     break;
             }
-            score.textContent = 'You: ' + playerScore + ' vs ' + 'Computer: ' + compScore;
+            scoreYou.textContent = playerScore;
+            scoreComp.textContent = compScore;
          
             if (playerScore >= 5 || compScore >= 5){
                 if (playerScore > compScore) {
@@ -172,7 +191,8 @@
             compScore = 0;
             winner.textContent = "";
             choice.textContent = "";
-            score.textContent = 'You: ' + playerScore + ' vs ' + 'Computer: ' + compScore;
+            scoreYou.textContent = playerScore;
+            scoreComp.textContent = compScore;
             container.removeChild(playAgain);
         }
     
