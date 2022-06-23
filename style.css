@@ -35,7 +35,7 @@ input[type="image"] {
     border-color: white;
 }
 
-.buttonContainer{
+.buttonContainer {
     display: flex;
     gap: 30px;
     justify-content: center; 
@@ -47,4 +47,10 @@ input[type="image"] {
     gap: 100px;
     justify-content: center;
     margin-bottom: 50px;
+}
+
+#win {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }

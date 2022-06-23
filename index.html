@@ -13,12 +13,12 @@
         <div id="scoreboard"></div>
         <div id="results"></div>
     </div>
+    <div id="win"></div>
     <div class="buttonContainer">
         <input id="rock" type="image" name="rock" src="images/rock.gif">
         <input id="paper" type="image" name="paper" src="images/paper.jpeg">   
         <input id="scissors" type="image" name="scissors" src="images/scissors.jpeg">    
     </div>
-
     <audio id="boom" src="audio/boom.mp3"></audio>
     <script>
 
@@ -44,6 +44,10 @@
                     audio.currentTime = 0;
                     audio.play();
                 }
+                if (compInput === 'rock') {
+                    audio.currentTime = 0;
+                    audio.play();
+                }
             });
         });
 
@@ -52,6 +56,7 @@
         const container = document.querySelector('#container');
         const scoreboard = document.querySelector('#scoreboard');
         const results = document.querySelector('#results');
+        const win = document.querySelector('#win');
 
         // display results
         const youSide = document.createElement('div');
@@ -98,6 +103,9 @@
         computer.style.fontWeight = 'bolder';
 
         winner.style.margin = '0';
+        winner.style.color = 'white';
+        winner.style.fontSize = '30px';
+        winner.fontWeight = 'bolder';
 
         container.appendChild(results);
         scoreboard.appendChild(youSide);
@@ -108,7 +116,7 @@
         compSide.appendChild(scoreComp);
         results.appendChild(youChoice);
         results.appendChild(compChoice);
-        //results.appendChild(winner);
+        win.appendChild(winner);
 
         you.textContent = 'You';    
         computer.textContent = 'Computer';
@@ -281,7 +289,7 @@
         function restartGame() {
             playerScore = 0;
             compScore = 0;
-            winner.textContent = "";
+            win.textContent = "";
             youChoice.textContent = "";
             compChoice.textContent = "";
             scoreYou.textContent = playerScore;
