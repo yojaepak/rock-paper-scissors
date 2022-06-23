@@ -25,6 +25,7 @@ body {
     text-align: center;
     margin-left: 250px;
     margin-right: 250px;
+    margin-bottom: 20px;
 }
 
 input[type="image"] {
@@ -39,4 +40,11 @@ input[type="image"] {
     gap: 30px;
     justify-content: center; 
 
+}
+
+#results {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    margin-bottom: 50px;
 }

@@ -11,12 +11,15 @@
     <div class="title">ROCK PAPER SCISSORS</div>
     <div id="container">
         <div id="scoreboard"></div>
+        <div id="results"></div>
     </div>
     <div class="buttonContainer">
         <input id="rock" type="image" name="rock" src="images/rock.gif">
         <input id="paper" type="image" name="paper" src="images/paper.jpeg">   
         <input id="scissors" type="image" name="scissors" src="images/scissors.jpeg">    
     </div>
+
+    <audio id="boom" src="audio/boom.mp3"></audio>
     <script>
 
         let playerInput;
@@ -28,19 +31,29 @@
         
         // check for when a rps button is clicked
         const buttons = document.querySelectorAll('input');
+        const audio = document.querySelector('audio');
 
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 computerPlay();
                 compare(button.id, compInput);
+                if (button.id === 'rock') {
+                    if (!audio) {
+                        return;
+                    }
+                    audio.currentTime = 0;
+                    audio.play();
+                }
             });
         });
 
+
+
         const container = document.querySelector('#container');
         const scoreboard = document.querySelector('#scoreboard');
+        const results = document.querySelector('#results');
 
         // display results
-        const results = document.createElement('div');
         const youSide = document.createElement('div');
         const compSide = document.createElement('div');
         const scoreYou = document.createElement('p');
@@ -53,21 +66,37 @@
 
 
         youChoice.style.margin = '0';
+        youChoice.style.width = '200px';
+        youChoice.style.height = '200px';
+        youChoice.style.borderStyle = 'solid';
+        youChoice.style.borderColor = 'white';
+        youChoice.style.borderWidth = '5px';
+
         compChoice.style.margin = '0';
+        compChoice.style.width = '200px';
+        compChoice.style.height = '200px';
+        compChoice.style.borderStyle = 'solid';
+        compChoice.style.borderColor = 'white';
+        compChoice.style.borderWidth = '5px';
+
         scoreYou.style.margin = '0';
         scoreYou.style.color = 'white';
         scoreYou.style.fontSize = '30px'
+
         you.style.margin = '0';
         you.style.color = 'white';
         you.style.fontSize = '50px';
         you.style.fontWeight = 'bolder';
+
         scoreComp.style.margin = '0';
         scoreComp.style.color = 'white';
         scoreComp.style.fontSize = '30px';
+
         computer.style.margin = '0';
         computer.style.color = 'white';
         computer.style.fontSize = '50px';
         computer.style.fontWeight = 'bolder';
+
         winner.style.margin = '0';
 
         container.appendChild(results);
@@ -79,7 +108,7 @@
         compSide.appendChild(scoreComp);
         results.appendChild(youChoice);
         results.appendChild(compChoice);
-        results.appendChild(winner);
+        //results.appendChild(winner);
 
         you.textContent = 'You';    
         computer.textContent = 'Computer';
@@ -124,69 +153,105 @@
 
                 case "rockrock":
                     console.log("It's a tie.");
-                    youChoice.textContent = 'You chose: rock';
-                    compChoice.textContent = 'Computer chose: rock';
+                    youChoice.style.backgroundImage= "url('images/rock.gif')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'white';
+                    compChoice.style.backgroundImage= "url('images/rock.gif')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'white';
                     winner.textContent = "It's a tie.";
                     break;
                 
                 case "rockpaper":
                     console.log("You lose.");
-                    youChoice.textContent = 'You chose: rock';
-                    compChoice.textContent = 'Computer chose: paper';
+                    youChoice.style.backgroundImage= "url('images/rock.gif')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'white';
+                    compChoice.style.backgroundImage= "url('images/paper.jpeg')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'gold';
                     winner.textContent = "You lose.";
                     compScore++;
                     break;
                 
                 case "rockscissors":
                     console.log("You win.");
-                    youChoice.textContent = 'You chose: rock';
-                    compChoice.textContent = 'Computer chose: scissors';
+                    youChoice.style.backgroundImage= "url('images/rock.gif')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'gold';
+                    compChoice.style.backgroundImage= "url('images/scissors.jpeg')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'white';
                     winner.textContent = "You win.";
                     playerScore++;
                     break;
                 
                 case "paperpaper":
                     console.log("It's a tie.");
-                    youChoice.textContent = 'You chose: paper';
-                    compChoice.textContent = 'Computer chose: paper';
+                    youChoice.style.backgroundImage= "url('images/paper.jpeg')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'white';
                     winner.textContent = "It's a tie.";
+                    compChoice.style.backgroundImage= "url('images/paper.jpeg')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'white';
                     break;
                 
                 case "paperscissors":
                     console.log("You lose.");
-                    youChoice.textContent = 'You chose: paper';
-                    compChoice.textContent = 'Computer chose: scissors';
+                    youChoice.style.backgroundImage= "url('images/paper.jpeg')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'white';
+                    compChoice.style.backgroundImage= "url('images/scissors.jpeg')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'gold';
                     winner.textContent = "You lose.";
                     compScore++;
                     break;
                 
                 case "paperrock":
                     console.log("You win.");
-                    youChoice.textContent = 'You chose: paper';
-                    compChoice.textContent = 'Computer chose: rock';
+                    youChoice.style.backgroundImage= "url('images/paper.jpeg')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'gold';
+                    compChoice.style.backgroundImage= "url('images/rock.gif')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'white';
                     winner.textContent = "You win.";
                     playerScore++;
                     break;
 
                 case "scissorsscissors":
                     console.log("It's a tie.");
-                    youChoice.textContent = 'You chose: scissors';
-                    compChoice.textContent = 'Computer chose: scissors';
+                    youChoice.style.backgroundImage= "url('images/scissors.jpeg')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'white';
+                    compChoice.style.backgroundImage= "url('images/scissors.jpeg')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'white';
                     winner.textContent = "It's a tie.";
                     break;
                 
                 case "scissorsrock":
                     console.log("You lose.");
-                    youChoice.textContent = 'You chose: scissors';
-                    compChoice.textContent = 'Computer chose: rock';
+                    youChoice.style.backgroundImage= "url('images/scissors.jpeg')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'white';
+                    compChoice.style.backgroundImage= "url('images/rock.gif')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'gold';
                     winner.textContent = "You lose.";
                     compScore++;
                     break;
                 
                 case "scissorspaper":
                     console.log("You win.");
-                    youChoice.textContent = 'You chose: scissors';
-                    compChoice.textContent = 'Computer chose: paper';
+                    youChoice.style.backgroundImage= "url('images/scissors.jpeg')";
+                    youChoice.style.backgroundSize = "cover";
+                    youChoice.style.borderColor = 'gold';
+                    compChoice.style.backgroundImage= "url('images/paper.jpeg')";
+                    compChoice.style.backgroundSize = "cover";
+                    compChoice.style.borderColor = 'white';
                     winner.textContent = "You win.";
                     playerScore++;
                     break;
@@ -217,7 +282,8 @@
             playerScore = 0;
             compScore = 0;
             winner.textContent = "";
-            choice.textContent = "";
+            youChoice.textContent = "";
+            compChoice.textContent = "";
             scoreYou.textContent = playerScore;
             scoreComp.textContent = compScore;
             container.removeChild(playAgain);
