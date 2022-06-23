@@ -10,10 +10,6 @@
 <body>
     <div class="title">ROCK PAPER SCISSORS</div>
     <div id="container">
-        <div class="players">
-            <div class="player">You</div>
-            <div class="player">Computer</div>
-        </div>
         <div id="scoreboard"></div>
     </div>
     <button id="rock">rock</button>
@@ -43,7 +39,11 @@
 
         // display results
         const results = document.createElement('div');
+        const youSide = document.createElement('div');
+        const compSide = document.createElement('div');
         const scoreYou = document.createElement('p');
+        const you = document.createElement('p');
+        const computer = document.createElement('p');
         const scoreComp = document.createElement('p');
         const winner = document.createElement('p');
         const choice = document.createElement('p');
@@ -53,18 +53,29 @@
         scoreYou.style.margin = '0';
         scoreYou.style.color = 'white';
         scoreYou.style.fontSize = '30px'
+        you.style.margin = '0';
+        you.style.color = 'white';
+        you.style.fontSize = '30px';
         scoreComp.style.margin = '0';
         scoreComp.style.color = 'white';
         scoreComp.style.fontSize = '30px';
+        computer.style.margin = '0';
+        computer.style.color = 'white';
+        computer.style.fontSize = '30px';
         winner.style.margin = '0';
 
         container.appendChild(results);
-        scoreboard.appendChild(scoreYou);
-        scoreboard.appendChild(scoreComp);
+        scoreboard.appendChild(youSide);
+        scoreboard.appendChild(compSide);
+        youSide.appendChild(you);
+        youSide.appendChild(scoreYou);
+        compSide.appendChild(computer);
+        compSide.appendChild(scoreComp);
         results.appendChild(choice);
         results.appendChild(winner);
 
-
+        you.textContent = 'You';    
+        computer.textContent = 'Computer';
         scoreYou.textContent = playerScore;
         scoreComp.textContent = compScore;
 

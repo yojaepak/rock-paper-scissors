@@ -21,22 +21,5 @@ body {
 
 #scoreboard {
     display: flex;
-    justify-content: space-around;
-    margin-left: 120px;
-    margin-right: 120px;
-}
-
-.player {
-    font-size: 60px;
-
-}
-
-.players {
-    display: flex;
-    justify-content: space-around;
-    margin-left: 120px;
-    margin-right: 120px;
-    font-weight: bold;
-    color: #e2e2e2;
-    
+    justify-content: space-between;
 }
