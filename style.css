@@ -33,3 +33,10 @@ input[type="image"] {
     border-style: solid;
     border-color: white;
 }
+
+.buttonContainer{
+    display: flex;
+    gap: 30px;
+    justify-content: center; 
+
+}
