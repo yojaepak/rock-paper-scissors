@@ -128,6 +128,9 @@
         // restart game when button pushed 
         const playAgain = document.createElement('button');
 
+        playAgain.style.width = '100px';
+
+
         // take user input to play rps
         function playerPlay() {
             let pass = false;
@@ -278,7 +281,7 @@
                 }
                 
                 playAgain.textContent = 'Play again?';
-                container.appendChild(playAgain);
+                win.appendChild(playAgain);
 
                 playAgain.addEventListener('click', () => {
                     restartGame();  
@@ -291,11 +294,11 @@
             playerScore = 0;
             compScore = 0;
             win.textContent = "";
-            youChoice.textContent = "";
+            youChoice.textContent = ""; 
             compChoice.textContent = "";
             scoreYou.textContent = playerScore;
             scoreComp.textContent = compScore;
-            container.removeChild(playAgain);
+            win.removeChild(playAgain);
         }
     
 
